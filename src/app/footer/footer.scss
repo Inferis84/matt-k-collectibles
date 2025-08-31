@@ -1,0 +1,28 @@
+@use "@angular/material" as mat;
+
+:host {
+  background: var(--mat-sys-surface-dim);
+  color: var(--mat-sys-on-surface);
+  border: 1px solid var(--mat-sys-outline-variant);
+  font: var(--mat-sys-headline-small);
+}
+
+.footer {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 0 2rem;
+
+  .footer-contact {
+    display: flex;
+  }
+
+  .footer-social {
+    display: flex;
+    gap: 1.5rem;
+
+    a {
+        text-decoration: none;
+    }
+  }
+}
