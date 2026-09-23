@@ -1,0 +1,84 @@
+@use "@angular/material" as mat;
+@use './theme-colors' as mkc-theme;
+@use './material-overrides';
+
+html {
+  @include mat.theme(
+    (
+      color: (
+        theme-type: dark,
+        primary: mkc-theme.$primary-palette,
+        tertiary: mkc-theme.$tertiary-palette,
+      ),
+      typography: (
+        brand-family: Electrolize,
+        plain-family: Roboto,
+      ),
+      density: 0,
+    )
+  );
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  background: var(--mat-sys-surface);
+  color: var(--mat-sys-on-surface);
+  font: var(--mat-sys-body-large);
+}
+
+.content-container {
+  display: block;
+  min-height: calc(100vh - 120px);
+  max-width: 720px;
+  margin: 2rem auto;
+  text-align: center;
+  padding: 2rem;
+}
+
+a {
+  color: var(--mat-sys-on-surface);
+  padding: 0.5rem 0.75rem;
+  border-radius: 4px;
+  transition: background 0.2s;
+  text-decoration: none;
+}
+
+a.highlight {
+  &:hover {
+    background: var(--mat-sys-on-surface-variant);
+    color: var(--mat-sys-inverse-on-surface);
+  }
+
+  &.active {
+    background: var(--mat-sys-on-surface-variant);
+    color: var(--mat-sys-inverse-on-surface);
+  }
+}
+
+h1 {
+  font: var(--mat-sys-headline-large);
+  margin: 0;
+}
+
+h2 {
+  font: var(--mat-sys-headline-medium);
+  margin: 0;
+}
+
+h3 {
+  font: var(--mat-sys-headline-small);
+  margin: 0;
+}
+
+p {
+  font: var(--mat-sys-body-large);
+  margin: 0;
+}
+
+.error-messages {
+  color: var(--mat-sys-error);
+}

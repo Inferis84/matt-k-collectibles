@@ -1,6 +1,6 @@
 {
   "name": "matt-k-collectibles",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -21,6 +21,7 @@
     "@angular/platform-server": "^20.0.0-next.0",
     "@angular/router": "^20.0.0-next.0",
     "@angular/ssr": "^20.0.0-rc.0",
+    "@supabase/supabase-js": "^2.105.4",
     "express": "^5.1.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",

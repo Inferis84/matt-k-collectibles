@@ -1,1 +1,147 @@
-<p>commissions works!</p>
+<div class="content-container">
+  <section id="commissions-intro">
+    <h1>Commission a Project</h1>
+    <p>
+      Use this form to request a commissioned project. We will work closely with
+      you to fully define the project — including scale, colours, and style —
+      through direct communication. Pricing will be negotiated during that
+      process and finalized before any work begins.
+    </p>
+  </section>
+
+  <h2>Commission Request</h2>
+
+  <form [formGroup]="commissionForm" (ngSubmit)="onSubmit()" novalidate>
+    <mat-grid-list cols="2" rowHeight="5rem" gutterSize="16px">
+      <mat-grid-tile colspan="1">
+        <mat-form-field appearance="fill">
+          <mat-label>Name</mat-label>
+          <input
+            matInput
+            formControlName="name"
+            id="name"
+            aria-required="true"
+            aria-describedby="nameError"
+            autocomplete="name"
+          />
+          @if (checkError('name', 'required')) {
+          <mat-error>Name is required.</mat-error>
+          } @if (checkError('name', 'minlength')) {
+          <mat-error>Name must be at least 2 characters long.</mat-error>
+          }
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile colspan="1">
+        <mat-form-field appearance="fill">
+          <mat-label>Email</mat-label>
+          <input
+            matInput
+            formControlName="email"
+            id="email"
+            type="email"
+            aria-required="true"
+            aria-describedby="emailError"
+            autocomplete="email"
+          />
+          @if (checkError('email', 'required')) {
+          <mat-error>Email is required.</mat-error>
+          } @if (checkError('email', 'email')) {
+          <mat-error>Please enter a valid email address.</mat-error>
+          }
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile colspan="2">
+        <mat-form-field appearance="fill">
+          <mat-label>Project Title</mat-label>
+          <input
+            matInput
+            formControlName="title"
+            id="title"
+            aria-describedby="titleError"
+          />
+          @if (checkError('title', 'required')) {
+          <mat-error>Project title is required.</mat-error>
+          }
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile colspan="2" rowspan="2">
+        <mat-form-field appearance="fill">
+          <mat-label>Description</mat-label>
+          <mat-hint
+            >Provide as much detail as possible about your project.</mat-hint
+          >
+          <textarea
+            matInput
+            id="description"
+            formControlName="description"
+            rows="5"
+          ></textarea>
+          @if (checkError('description', 'required')) {
+          <mat-error>A description is required.</mat-error>
+          } @if (checkError('description', 'minlength')) {
+          <mat-error>Please provide at least 10 characters.</mat-error>
+          }
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile colspan="1">
+        <mat-form-field appearance="fill">
+          <mat-label>Budget (USD)</mat-label>
+          <input
+            matInput
+            id="budget"
+            formControlName="budget"
+            type="text"
+            appCurrencyInput="USD"
+          />
+          @if (checkError('budget', 'min')) {
+          <mat-error>Budget must be a positive number.</mat-error>
+          }
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile colspan="1">
+        <mat-form-field appearance="fill">
+          <mat-label>Deadline</mat-label>
+          <input
+            matInput
+            [matDatepicker]="picker"
+            id="deadline"
+            formControlName="deadline"
+            [min]="minDate"
+            [max]="maxDate"
+          />
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          @if (checkError('deadline', 'matDatepickerMin')) {
+          <mat-error>Deadline must be in the future.</mat-error>
+          } @if (checkError('deadline', 'matDatepickerMax')) {
+          <mat-error
+            >Deadline cannot be more than 2 years from today.</mat-error
+          >
+          }
+        </mat-form-field>
+      </mat-grid-tile>
+    </mat-grid-list>
+
+    <div class="form-actions">
+      <button matButton="filled" type="submit" [disabled]="commissionForm.invalid">
+        <ng-container>Submit Request</ng-container>
+      </button>
+      <button matButton="tonal" type="button" (click)="reset()">Reset</button>
+    </div>
+  </form>
+
+  @if (submissionMessage) {
+
+  <div id="submission-message">{{ submissionMessage }}</div>
+  }
+</div>
+

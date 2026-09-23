@@ -15,11 +15,17 @@
   height: 100%;
   object-fit: cover;
 }
-.home-banner h1 {
-  position: absolute;
-  top: 18%;
-  left: 10%;
-  font: var(--mat-sys-headline-large);
+.home-banner {
+  h1 {
+    position: absolute;
+    top: 18%;
+    left: 10%;
+  }
+  h3 {
+    position: absolute;
+    top: 25%;
+    left: 10%;
+  }
 }
 
 .nav-images {
@@ -45,6 +51,10 @@
     p {
       margin-top: 0;
       padding: 0rem 1rem;
+    }
+
+    h1 {
+      font-size: 4vw;
     }
   }
 }
